@@ -85,35 +85,46 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: 'dirtywhite',
+    backgroundColor: '#181818', // dark background
   },
   title: {
     fontSize: 32,
     marginBottom: 24,
     textAlign: 'center',
     fontWeight: 'bold',
+    color: '#fafafa', // light text
   },
   input: {
     height: 48,
-    borderColor: '#ccc',
+    borderColor: '#333',
     borderWidth: 1,
     borderRadius: 8,
     marginBottom: 16,
     paddingHorizontal: 12,
+    backgroundColor: '#222', // dark input
+    color: '#fafafa', // light text
   },
   button: {
-    backgroundColor: '#30d3c8ff',
+    backgroundColor: '#0095f6', // Instagram blue
     paddingVertical: 14,
     borderRadius: 8,
+    marginTop: 10,
+    shadowColor: '#0095f6',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.18,
+    shadowRadius: 6,
+    elevation: 4,
   },
-  buttonText: { 
+  buttonText: {
     color: '#fff',
-    margin:10,
+    margin: 10,
     textAlign: 'center',
     fontSize: 16,
+    fontWeight: 'bold',
+    letterSpacing: 1,
   },
   clearButton: {
-    backgroundColor: '#368248ff',
+    backgroundColor: '#333', // dark clear button
     paddingVertical: 14,
     borderRadius: 8,
     marginVertical: 10,
