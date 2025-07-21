@@ -1,132 +1,65 @@
-import React, { useState } from 'react';
-import {
-  Pressable,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import { Link } from "expo-router";
+import { StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [age, setAge] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = () => {
-    if (name && email && age) {
-      setSubmitted(true);
-    } else {
-      alert('Please fill out all fields.');
-    }
-  };
-
-  const handleClear = () => {
-    setName('');
-    setEmail('');
-    setAge('');
-    setSubmitted(false);
-  };
-
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.title}>User Registration Form</Text>
+    <View style={styles.container}>
+      <Text style={[styles.title, { color: '#02031bff' }]}>Welcome to My App!</Text>
 
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your name"
-          value={name}
-          onChangeText={(text: string) => setName(text)}
-        />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your email"
-          value={email}
-          onChangeText={(text: string) => setEmail(text)}
-          keyboardType="email-address"
-        />
+      <Link href="/login" style={styles.link}>
+        <Text style={styles.linkText}>LOGIN</Text>
+      </Link>
 
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your age"
-          value={age}
-          onChangeText={(text: string) => setAge(text)}
-          keyboardType="numeric"
-        />
-
-        <View style={styles.buttonContainer}>
-          <Pressable style={styles.button} onPress={handleSubmit}>
-            <Text style={styles.buttonText}>Submit</Text>
-          </Pressable>
-          <Pressable style={[styles.button, styles.clearButton]} onPress={handleClear}>
-            <Text style={styles.buttonText}>Clear</Text>
-          </Pressable>
-        </View>
-
-        {submitted && (
-          <View style={styles.output}>
-            <Text style={styles.outputTitle}>Submitted Information:</Text>
-            <Text>Name: {name}</Text>
-            <Text>Email: {email}</Text>
-            <Text>Age: {age}</Text>
-          </View>
-        )}
-      </ScrollView>
-    </SafeAreaView>
+      <Text style={styles.separatorText}>or</Text>
+      
+      <Link href="/signup" style={styles.link}>
+        <Text style={styles.linkText}>SIGN UP</Text>
+      </Link>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  content: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#9bc9c4ff", // Light neutral background
     padding: 20,
-    justifyContent: 'center',
   },
   title: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
+    fontSize: 28,
+    fontWeight: "700",
+    color: "#333",
+    marginBottom: 25,
+    textAlign: "center",
   },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 12,
-    borderRadius: 8,
-    marginBottom: 15,
+  link: {
+    marginTop: 15,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    backgroundColor: "#4cff3cff", // 
+    borderRadius: 10,
+    minWidth: 160,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 3,
   },
-  buttonContainer: {
-    marginBottom: 20,
-  },
-  button: {
-    backgroundColor: '#4CAF50', // Green button
-    padding: 15,
-    borderRadius: 8,
-    marginBottom: 10,
-    alignItems: 'center',
-    width: '100%',
-  },
-  clearButton: {
-    backgroundColor: '#ff5c5c', // Red button for clear
-  },
-  buttonText: {
-    color: '#fff',
+  linkText: {
+    color: "#fff",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "600",
+    letterSpacing: 0.5,
   },
-  output: {
-    backgroundColor: '#f1f1f1',
-    padding: 15,
-    borderRadius: 8,
-  },
-  outputTitle: {
-    fontWeight: 'bold',
-    marginBottom: 5,
+  separatorText: {
+    marginVertical: 20,
+    fontSize: 14,
+    color: "#666",
+    textAlign: "center",
   },
 });
+
