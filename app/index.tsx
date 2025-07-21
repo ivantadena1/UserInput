@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Button,
+  Pressable,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 export default function Index() {
-   const [name, setName] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [age, setAge] = useState('');
   const [submitted, setSubmitted] = useState(false);
@@ -31,7 +31,7 @@ export default function Index() {
   };
 
   return (
- <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.title}>User Registration Form</Text>
 
@@ -59,9 +59,12 @@ export default function Index() {
         />
 
         <View style={styles.buttonContainer}>
-          <Button title="Submit" onPress={handleSubmit} />
-          <View style={styles.space} />
-          <Button title="Clear" onPress={handleClear} color="#ff5c5c" />
+          <Pressable style={styles.button} onPress={handleSubmit}>
+            <Text style={styles.buttonText}>Submit</Text>
+          </Pressable>
+          <Pressable style={[styles.button, styles.clearButton]} onPress={handleClear}>
+            <Text style={styles.buttonText}>Clear</Text>
+          </Pressable>
         </View>
 
         {submitted && (
@@ -99,12 +102,23 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     marginBottom: 20,
   },
-  space: {
-    width: 10,
+  button: {
+    backgroundColor: '#4CAF50', // Green button
+    padding: 15,
+    borderRadius: 8,
+    marginBottom: 10,
+    alignItems: 'center',
+    width: '100%',
+  },
+  clearButton: {
+    backgroundColor: '#ff5c5c', // Red button for clear
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   output: {
     backgroundColor: '#f1f1f1',
